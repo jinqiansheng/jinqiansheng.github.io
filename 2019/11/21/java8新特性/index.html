@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="金乾胜的个人微博"><meta name="keywords" content="java,jqs,金乾胜,jinqiansheng"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="stylesheet" type="text/css" href="https://unpkg.com/gitalk/dist/gitalk.css?v=2.0.4"><title>java8新特性 | 金乾胜</title><meta name="generator" content="Hexo 4.0.0"><link rel="alternate" href="/atom.xml" title="金乾胜" type="application/atom+xml">
-</head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">java8新特性</h1><a id="logo" href="/.">金乾胜</a><p class="description">榔头，榔头，有谁看见我的榔头了？</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">java8新特性</h1><div class="post-meta"><a href="/2019/11/21/java8%E6%96%B0%E7%89%B9%E6%80%A7/#comments" class="comment-count"></a><p><span class="date">Nov 21, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>Java 8发行版是自Java 5（发行于2004，已经过了相当一段时间了）以来最具革命性的版本。Java 8 为Java语言、编译器、类库、开发工具与JVM（Java虚拟机）带来了大量新特性。在这篇教程中，我们将一一探索这些变化，并用真实的例子说明它们适用的场景。</p>
-<h3 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式:"></a>Lambda表达式:</h3><p><strong>示例：</strong></p>
+</head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">java8新特性</h1><a id="logo" href="/.">金乾胜</a><p class="description">榔头，榔头，有谁看见我的榔头了？</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">java8新特性</h1><div class="post-meta"><a href="/2019/11/21/java8%E6%96%B0%E7%89%B9%E6%80%A7/#comments" class="comment-count"></a><p><span class="date">Nov 21, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>Java语言、编译器、类库、开发工具与JVM（Java虚拟机）带来了大量新特性。这些特性将颠覆以往的写代码习惯，简化开发量。</p>
+<h3 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h3><p><strong>示例：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(parameters) -&gt; expression || (parameters) -&gt;&#123; statements; &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>左侧：</strong><br>Lambda 表达式的列表参数，如getValue(T,R); 就应该是(T,R) -&gt; xxxxx，如果无参数就直接写 () -&gt; xxxxx，只有一个参数小括号可以不写;</p>
 <p><strong>右侧：</strong><br>Lambda 表达式的方法体（Lambda体），就是对getValue(T,R)的实现，方法体有多条语句 可以用大括号括起来，如：-&gt; {xxxxx;xxxxx;}，只有一条语句 return 和 {}都可以不写;</p>
@@ -15,22 +15,22 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">Consumer<T></td>
+<td align="center">Consumer&lt; T &gt;</td>
 <td align="center">消费型接口</td>
 <td align="center">void accept(T t)</td>
 </tr>
 <tr>
-<td align="center">Supplier<T></td>
+<td align="center">Supplier&lt; T &gt;</td>
 <td align="center">供给型接口</td>
 <td align="center">T get()</td>
 </tr>
 <tr>
-<td align="center">Function&lt;T, R&gt;</td>
+<td align="center">Function&lt; T, R &gt;</td>
 <td align="center">函数型接口</td>
 <td align="center">R apply(T t)</td>
 </tr>
 <tr>
-<td align="center">Predicate<T></td>
+<td align="center">Predicate&lt; T &gt;</td>
 <td align="center">断言型接口</td>
 <td align="center">boolean test(T t)</td>
 </tr>
@@ -105,7 +105,8 @@
 </ol>
 <p><strong><font color=#FF0000 >注意：</font></strong>&nbsp;需要调用的构造器的参数列表与函数式接口中的抽象方法的参数列表保持一致;<br>2. <strong>数组引用:</strong> &nbsp;&nbsp;<code>Type::new;</code></p>
 <h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><p>Stream的操作是操作的复制的数据流，不改变原数据;</p>
-<h4 id="三个操作步骤"><a href="#三个操作步骤" class="headerlink" title="三个操作步骤:"></a>三个操作步骤:</h4><p><strong>1. 创建Stream</strong></p>
+<p><strong>三个操作步骤:</strong></p>
+<p><strong>1. 创建Stream</strong></p>
 <ul>
 <li>可以通过Collection系列集合提供的stream()或parallelStream();</li>
 <li>通过Arrays中的静态方法stream()获取数组流;</li>
@@ -122,10 +123,8 @@
 </ul>
 <p><strong><font color=#708090>映射：</font></strong></p>
 <ul>
-<li>map: 接收Lambda，将元素转换成其他形式或提取信息，接收一个函数作为参数，该参数会被应用到每个元素上，并将其映射成一个新元素;<ul>
+<li>map: 接收Lambda，将元素转换成其他形式或提取信息，接收一个函数作为参数，该参数会被应用到每个元素上，并将其映射成一个新元素;</li>
 <li>flatMap: 接收一个函数作为参数，将流中的每一个值都换成另一个流，然后把所有的流连接成一个流;</li>
-</ul>
-</li>
 </ul>
 <p><strong><font color=#708090>排序：</font></strong>   </p>
 <ul>
@@ -154,7 +153,10 @@
 <li>orElse(T t) 如果调用对象包含值，返回该值，否则返回t;</li>
 <li>orElseGet(Supplier s) 如果调用对象包含值返回该值，否则返回s获取的值;</li>
 <li>map(Function f) 如果有值对齐处理，并返回处理后的Optional，否则返回Optional.empty();</li>
-<li>flatMap(Function mapper) 与map类似，要求返回的值必须是Optional;<h3 id="新的时间日期API"><a href="#新的时间日期API" class="headerlink" title="新的时间日期API"></a>新的时间日期API</h3>LocalDate 日期、LocalTime 时间、LocalDateTime 日期和时间 是属于不可变的对象，使用的是国际化的ISO-8601日历系统可以通过.now()方法获取当前时间或用of(年，月，日，时，分，秒)获取参数给定的时间;</li>
+<li>flatMap(Function mapper) 与map类似，要求返回的值必须是Optional;</li>
+</ul>
+<h3 id="新的时间日期API"><a href="#新的时间日期API" class="headerlink" title="新的时间日期API"></a>新的时间日期API</h3><p>LocalDate 日期、LocalTime 时间、LocalDateTime 日期和时间 是属于不可变的对象，使用的是国际化的ISO-8601日历系统可以通过.now()方法获取当前时间或用of(年，月，日，时，分，秒)获取参数给定的时间;</p>
+<ul>
 <li>Instant: 时间戳 now()获取默认是UTC时区;</li>
 <li>Duration: 计算两个时间之间的间隔、period：计算两个日期之间的间隔</li>
 <li>TemporalAdjuster: 时间校正器。如将日期调整到下周等操作。TemporalAdjusters 类提供了大量的TemporalAdjuster的实现;</li>
@@ -177,7 +179,7 @@
   language: 'zh-CN',
   pagerDirection: 'last'
 })
-gitalk.render('container')</script></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda表达式"><span class="toc-text">Lambda表达式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream"><span class="toc-text">Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#三个操作步骤"><span class="toc-text">三个操作步骤:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Optional类"><span class="toc-text">Optional类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新的时间日期API"><span class="toc-text">新的时间日期API</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/21/java8%E6%96%B0%E7%89%B9%E6%80%A7/">java8新特性</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">java基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">1</span></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">金乾胜.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var _hmt = _hmt || [];
+gitalk.render('container')</script></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda表达式"><span class="toc-text">Lambda表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream"><span class="toc-text">Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Optional类"><span class="toc-text">Optional类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新的时间日期API"><span class="toc-text">新的时间日期API</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/21/java8%E6%96%B0%E7%89%B9%E6%80%A7/">java8新特性</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">java基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">1</span></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">金乾胜.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?15169873357bbc74e70db9b309cc5d99";
