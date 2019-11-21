@@ -96,7 +96,72 @@
 </tbody></table>
 <p><strong>方法引用：</strong><br>若Lambda体中的内容有方法已经实现了，我们可以使用方法引用（可以理解为方法引用是Lambda表达式的另外一种表现形式；</p>
 <p><strong>主要有三种语法方式：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">对象::跟实例方法名</span><br><span class="line">类::静态方法名</span><br><span class="line">类::实例方法名</span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">**详解：**</span><br><span class="line">Lambda体中调用的方法的参数列表与返回值类型必须与函数式接口的抽象方法的参数列表和返回值类型保持一致;</span><br><span class="line">若Lambda参数列表中的第一参数是实例方法的调用者，而第二个参数的实例方法的参数时，可以使用`ClassName::method;`</span><br><span class="line">1. **构造器引用：**&amp;nbsp;&amp;nbsp;`ClassName::New;`</span><br><span class="line">**&lt;font color=#FF0000 &gt;注意：&lt;/font&gt;**&amp;nbsp;需要调用的构造器的参数列表与函数式接口中的抽象方法的参数列表保持一致;</span><br><span class="line">2. **数组引用:** &amp;nbsp;&amp;nbsp;`Type::new;`</span><br><span class="line">### Stream</span><br><span class="line">Stream的操作是操作的复制的数据流，不改变原数据;</span><br><span class="line">#### 三个操作步骤:</span><br><span class="line">**1. 创建Stream**</span><br><span class="line">  - 可以通过Collection系列集合提供的stream()或parallelStream();</span><br><span class="line">  - 通过Arrays中的静态方法stream()获取数组流;</span><br><span class="line">  - 通过Stream类中的静态方法of();</span><br><span class="line">  - 通过Stream中的iterate()或generate()使用迭代的方式创建无限流; </span><br><span class="line"></span><br><span class="line">**2. 中间操作**</span><br><span class="line">多个中间操作可以连接形成一个流水线，除非流水线触发终止操作，否则中间操作不会执行	任何处理！而是再终止操作时一次性全部处理掉，称为“惰性求值”;   </span><br><span class="line"></span><br><span class="line">**&lt;font color=#708090&gt;筛选与切片：&lt;/font&gt;**</span><br><span class="line">   - filter: 接收Lambda,从流中排除某些元素;</span><br><span class="line">   - limit: 阶段流，使其元素不超过给定数量;</span><br><span class="line">   - skip(n)：跳过元素，返回一个扔掉前面n个元素的流，若流中元素不足n个，则返回一个空流。与limit(n)互补;</span><br><span class="line">   - distinct: 筛选，通过流所生成元素的hashCode()和equals()去除重复元素;  </span><br><span class="line">   </span><br><span class="line">**&lt;font color=#708090&gt;映射：&lt;/font&gt;**</span><br><span class="line"></span><br><span class="line">   - map: 接收Lambda，将元素转换成其他形式或提取信息，接收一个函数作为参数，该参数会被应用到每个元素上，并将其映射成一个新元素;</span><br><span class="line">  - flatMap: 接收一个函数作为参数，将流中的每一个值都换成另一个流，然后把所有的流连接成一个流;</span><br><span class="line"></span><br><span class="line">**&lt;font color=#708090&gt;排序：&lt;/font&gt;**   </span><br><span class="line">- sorted() 自然排序 按照Comparable中的compareTo 方法进行排序</span><br><span class="line">- sorted(Comparator com) 定制排序</span><br><span class="line"></span><br><span class="line">**3.  终止操作（终端操作）**</span><br><span class="line">查找与匹配：</span><br><span class="line">- allMatch 检查是否匹配所有元素</span><br><span class="line">- anyMatch 检查是否至少匹配一个元素</span><br><span class="line">- noneMatch 检查是否没有匹配所有元素</span><br><span class="line">- findFirst 返回第一个元素</span><br><span class="line">- findAny 返回当前流中的任意元素</span><br><span class="line">- count 返回流中的元素总个数</span><br><span class="line">- max 返回流中的最大值</span><br><span class="line">- min 返回流中的最小值</span><br><span class="line"></span><br><span class="line">**&lt;font color=#FF0000 &gt;注意：&lt;/font&gt;**</span><br><span class="line">使用stream获取流进行查找默认采用串行，parallelStream是并行查找,可以声明性的通过paraller()与sequential()进行切换并行流和顺序流;</span><br><span class="line">### Optional类</span><br><span class="line">Optional(java.util.Optional) 是一个容器类，代表一个值存在或者不存在，原来null表示一个值不存在，现在Optional可以更好的表达这个概念，并且可以避免空指针异常;</span><br><span class="line"></span><br><span class="line">**常用方法：**</span><br><span class="line">- Optional.of(T t) 创建一个Optional实例;</span><br><span class="line">- Optional.empty() 创建一个空的Optional;</span><br><span class="line">- Optional.ofNullable(T t) 若t不为null，创建Optional实例,否则创建一个空实例;</span><br><span class="line">- ifPresent() 判断是否包含值;</span><br><span class="line">- orElse(T t) 如果调用对象包含值，返回该值，否则返回t;</span><br><span class="line">- orElseGet(Supplier s) 如果调用对象包含值返回该值，否则返回s获取的值;</span><br><span class="line">- map(Function f) 如果有值对齐处理，并返回处理后的Optional，否则返回Optional.empty();</span><br><span class="line">- flatMap(Function mapper) 与map类似，要求返回的值必须是Optional;</span><br><span class="line">### 新的时间日期API</span><br><span class="line">LocalDate 日期、LocalTime 时间、LocalDateTime 日期和时间 是属于不可变的对象，使用的是国际化的ISO-8601日历系统可以通过.now()方法获取当前时间或用of(年，月，日，时，分，秒)获取参数给定的时间;</span><br><span class="line">- Instant: 时间戳 now()获取默认是UTC时区;</span><br><span class="line">- Duration: 计算两个时间之间的间隔、period：计算两个日期之间的间隔</span><br><span class="line">- TemporalAdjuster: 时间校正器。如将日期调整到下周等操作。TemporalAdjusters 类提供了大量的TemporalAdjuster的实现;</span><br><span class="line">- DateTimeFormatter: 该类提供了日期格式化的一些常量,也可以使用该类的ofPattern(String)进行自定义;</span><br><span class="line">- ZonedDate、ZonedTime、ZonedDateTime 带时区的时间，ZoneId类中包含了所有的时区信息，getAvailableZoneIds() 可以获取所有时区信息，of(id) 指定时区信息获取ZoneId对象;</span><br><span class="line"></span><br><span class="line">**示例：**</span><br><span class="line">```~</span><br><span class="line">LocalDateTime ldt = LocalDateTime.now(ZoneId.of(&quot;Asia/Shanghai&quot;));//获取上海时区的时间;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对象::跟实例方法名</span><br><span class="line">类::静态方法名</span><br><span class="line">类::实例方法名</span><br></pre></td></tr></table></figure>
+
+<p><strong>详解：</strong><br>Lambda体中调用的方法的参数列表与返回值类型必须与函数式接口的抽象方法的参数列表和返回值类型保持一致;<br>若Lambda参数列表中的第一参数是实例方法的调用者，而第二个参数的实例方法的参数时，可以使用<code>ClassName::method;</code></p>
+<ol>
+<li><strong>构造器引用：</strong>&nbsp;&nbsp;<code>ClassName::New;</code></li>
+</ol>
+<p><strong><font color=#FF0000 >注意：</font></strong>&nbsp;需要调用的构造器的参数列表与函数式接口中的抽象方法的参数列表保持一致;<br>2. <strong>数组引用:</strong> &nbsp;&nbsp;<code>Type::new;</code></p>
+<h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><p>Stream的操作是操作的复制的数据流，不改变原数据;</p>
+<h4 id="三个操作步骤"><a href="#三个操作步骤" class="headerlink" title="三个操作步骤:"></a>三个操作步骤:</h4><p><strong>1. 创建Stream</strong></p>
+<ul>
+<li>可以通过Collection系列集合提供的stream()或parallelStream();</li>
+<li>通过Arrays中的静态方法stream()获取数组流;</li>
+<li>通过Stream类中的静态方法of();</li>
+<li>通过Stream中的iterate()或generate()使用迭代的方式创建无限流; </li>
+</ul>
+<p><strong>2. 中间操作</strong><br>多个中间操作可以连接形成一个流水线，除非流水线触发终止操作，否则中间操作不会执行    任何处理！而是再终止操作时一次性全部处理掉，称为“惰性求值”;   </p>
+<p><strong><font color=#708090>筛选与切片：</font></strong></p>
+<ul>
+<li>filter: 接收Lambda,从流中排除某些元素;</li>
+<li>limit: 阶段流，使其元素不超过给定数量;</li>
+<li>skip(n)：跳过元素，返回一个扔掉前面n个元素的流，若流中元素不足n个，则返回一个空流。与limit(n)互补;</li>
+<li>distinct: 筛选，通过流所生成元素的hashCode()和equals()去除重复元素;  </li>
+</ul>
+<p><strong><font color=#708090>映射：</font></strong></p>
+<ul>
+<li>map: 接收Lambda，将元素转换成其他形式或提取信息，接收一个函数作为参数，该参数会被应用到每个元素上，并将其映射成一个新元素;<ul>
+<li>flatMap: 接收一个函数作为参数，将流中的每一个值都换成另一个流，然后把所有的流连接成一个流;</li>
+</ul>
+</li>
+</ul>
+<p><strong><font color=#708090>排序：</font></strong>   </p>
+<ul>
+<li>sorted() 自然排序 按照Comparable中的compareTo 方法进行排序</li>
+<li>sorted(Comparator com) 定制排序</li>
+</ul>
+<p><strong>3.  终止操作（终端操作）</strong><br>查找与匹配：</p>
+<ul>
+<li>allMatch 检查是否匹配所有元素</li>
+<li>anyMatch 检查是否至少匹配一个元素</li>
+<li>noneMatch 检查是否没有匹配所有元素</li>
+<li>findFirst 返回第一个元素</li>
+<li>findAny 返回当前流中的任意元素</li>
+<li>count 返回流中的元素总个数</li>
+<li>max 返回流中的最大值</li>
+<li>min 返回流中的最小值</li>
+</ul>
+<p><strong><font color=#FF0000 >注意：</font></strong><br>使用stream获取流进行查找默认采用串行，parallelStream是并行查找,可以声明性的通过paraller()与sequential()进行切换并行流和顺序流;</p>
+<h3 id="Optional类"><a href="#Optional类" class="headerlink" title="Optional类"></a>Optional类</h3><p>Optional(java.util.Optional) 是一个容器类，代表一个值存在或者不存在，原来null表示一个值不存在，现在Optional可以更好的表达这个概念，并且可以避免空指针异常;</p>
+<p><strong>常用方法：</strong></p>
+<ul>
+<li>Optional.of(T t) 创建一个Optional实例;</li>
+<li>Optional.empty() 创建一个空的Optional;</li>
+<li>Optional.ofNullable(T t) 若t不为null，创建Optional实例,否则创建一个空实例;</li>
+<li>ifPresent() 判断是否包含值;</li>
+<li>orElse(T t) 如果调用对象包含值，返回该值，否则返回t;</li>
+<li>orElseGet(Supplier s) 如果调用对象包含值返回该值，否则返回s获取的值;</li>
+<li>map(Function f) 如果有值对齐处理，并返回处理后的Optional，否则返回Optional.empty();</li>
+<li>flatMap(Function mapper) 与map类似，要求返回的值必须是Optional;<h3 id="新的时间日期API"><a href="#新的时间日期API" class="headerlink" title="新的时间日期API"></a>新的时间日期API</h3>LocalDate 日期、LocalTime 时间、LocalDateTime 日期和时间 是属于不可变的对象，使用的是国际化的ISO-8601日历系统可以通过.now()方法获取当前时间或用of(年，月，日，时，分，秒)获取参数给定的时间;</li>
+<li>Instant: 时间戳 now()获取默认是UTC时区;</li>
+<li>Duration: 计算两个时间之间的间隔、period：计算两个日期之间的间隔</li>
+<li>TemporalAdjuster: 时间校正器。如将日期调整到下周等操作。TemporalAdjusters 类提供了大量的TemporalAdjuster的实现;</li>
+<li>DateTimeFormatter: 该类提供了日期格式化的一些常量,也可以使用该类的ofPattern(String)进行自定义;</li>
+<li>ZonedDate、ZonedTime、ZonedDateTime 带时区的时间，ZoneId类中包含了所有的时区信息，getAvailableZoneIds() 可以获取所有时区信息，of(id) 指定时区信息获取ZoneId对象;</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime ldt = LocalDateTime.now(ZoneId.of(&quot;Asia/Shanghai&quot;));//获取上海时区的时间;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -111,7 +176,7 @@
   language: 'zh-CN',
   pagerDirection: 'last'
 })
-gitalk.render('container')</script></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda表达式"><span class="toc-text">Lambda表达式:</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/21/java8%E6%96%B0%E7%89%B9%E6%80%A7/">java8新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/21/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">java基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">2</span></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">金乾胜.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var _hmt = _hmt || [];
+gitalk.render('container')</script></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda表达式"><span class="toc-text">Lambda表达式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream"><span class="toc-text">Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#三个操作步骤"><span class="toc-text">三个操作步骤:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Optional类"><span class="toc-text">Optional类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新的时间日期API"><span class="toc-text">新的时间日期API</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/21/java8%E6%96%B0%E7%89%B9%E6%80%A7/">java8新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/21/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">java基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">2</span></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">金乾胜.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?15169873357bbc74e70db9b309cc5d99";
