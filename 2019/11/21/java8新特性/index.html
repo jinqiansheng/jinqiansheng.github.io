@@ -50,12 +50,12 @@
 <td align="center">R R apply(T t, U u);</td>
 </tr>
 <tr>
-<td align="center">UnaryOperator<T></td>
+<td align="center">UnaryOperator&lt; T &gt;</td>
 <td align="left">参数为T，对参数为T的对象进行一元操作，并返回T类型结果</td>
 <td align="center">T apply(T t);</td>
 </tr>
 <tr>
-<td align="center">BinaryOperator<T></td>
+<td align="center">BinaryOperator&lt; T &gt;</td>
 <td align="left">参数为T，对参数为T得对象进行二元操作，并返回T类型得结果</td>
 <td align="center">T apply(T t1， T t2);</td>
 </tr>
@@ -65,32 +65,32 @@
 <td align="center">void accept(T t, U u);</td>
 </tr>
 <tr>
-<td align="center">ToIntFunction<T></td>
+<td align="center">ToIntFunction&lt; T &gt;</td>
 <td align="left">参数类型为T，返回值分别为int分别计算int得函数</td>
 <td align="center">int applyAsInt(T value);</td>
 </tr>
 <tr>
-<td align="center">ToLongFunction<T></td>
+<td align="center">ToLongFunction&lt; T &gt;</td>
 <td align="left">参数类型为T，返回值分别为long分别计算long得函数</td>
 <td align="center">long applyAsLong(T value);</td>
 </tr>
 <tr>
-<td align="center">ToDoubleFunction<T></td>
+<td align="center">ToDoubleFunction&lt; T &gt;</td>
 <td align="left">参数类型为T，返回值分别为double分别计算double得函数</td>
 <td align="center">double applyAsDouble(T value);</td>
 </tr>
 <tr>
-<td align="center">IntFunction<R></td>
+<td align="center">IntFunction&lt; R &gt;</td>
 <td align="left">参数分别为int返回值为R</td>
 <td align="center">R apply(int value);</td>
 </tr>
 <tr>
-<td align="center">LongFunction<R></td>
+<td align="center">LongFunction&lt; R &gt;</td>
 <td align="left">参数分别为long返回值为R</td>
 <td align="center">R apply(long value)</td>
 </tr>
 <tr>
-<td align="center">DoubleFunction<R></td>
+<td align="center">DoubleFunction&lt; R &gt;</td>
 <td align="left">参数分别为double返回值为R</td>
 <td align="center">R apply(double value)</td>
 </tr>
