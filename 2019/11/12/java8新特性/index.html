@@ -97,7 +97,7 @@
 </tbody></table>
 <p><strong>方法引用：</strong><br>若Lambda体中的内容有方法已经实现了，我们可以使用方法引用（可以理解为方法引用是Lambda表达式的另外一种表现形式；</p>
 <p><strong>主要有三种语法方式：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对象::跟实例方法名</span><br><span class="line">类::静态方法名</span><br><span class="line">类::实例方法名</span><br></pre></td></tr></table></figure>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">对象::</span>跟实例方法名</span><br><span class="line"><span class="title">类::</span>静态方法名</span><br><span class="line"><span class="title">类::</span>实例方法名</span><br></pre></td></tr></table></figure>
 
 <p><strong>详解：</strong><br>Lambda体中调用的方法的参数列表与返回值类型必须与函数式接口的抽象方法的参数列表和返回值类型保持一致;<br>若Lambda参数列表中的第一参数是实例方法的调用者，而第二个参数的实例方法的参数时，可以使用<code>ClassName::method;</code></p>
 <ol>
