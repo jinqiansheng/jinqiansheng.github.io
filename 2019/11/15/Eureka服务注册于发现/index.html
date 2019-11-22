@@ -39,6 +39,7 @@
         SpringApplication.run(EurekaServer_App<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;
     }
 }</code></pre>
+<hr>
 <h4 id="EurekaClient-使用"><a href="#EurekaClient-使用" class="headerlink" title="EurekaClient 使用"></a>EurekaClient 使用</h4><p><strong>pom引入jar包</strong>  </p>
 <pre><code class="xml"><span class="comment">&lt;!-- 将微服务provider侧注册进eureka --&gt;</span>
 <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
@@ -65,6 +66,7 @@
         SpringApplication.run(EurekaClient_App <span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;
     }
 }</code></pre>
+<hr>
 <h4 id="服务提供者加入info监控信息"><a href="#服务提供者加入info监控信息" class="headerlink" title="服务提供者加入info监控信息"></a>服务提供者加入info监控信息</h4><p><strong>父maven项目加入</strong>  </p>
 <pre><code class="xml"><span class="tag">&lt;<span class="name">build</span>&gt;</span>
     <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>microservicecloud<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span>
@@ -98,6 +100,7 @@
    <span class="attr">company.name:</span> <span class="string">www.atguigu.com</span>
    <span class="attr">build.artifactId:</span> <span class="string">$project.artifactId$</span>
    <span class="attr">build.version:</span> <span class="string">$project.version$</span>  </code></pre>
+<hr>
 <h4 id="Eureka自我保护机制"><a href="#Eureka自我保护机制" class="headerlink" title="Eureka自我保护机制"></a>Eureka自我保护机制</h4><p>某时刻某一微服务不可用了，eureka不会立刻清理，依旧会对该微服务的信息进行保存。<br>默认情况下，如果EurekaServer在一定时间内没有接收到某个微服务实例的心跳，EurekaServer将会注销该实例，（默认90秒），但是当网络分区故障发生时，微服务与EurekaServer之间无法正常通信，Eureka会通过自我保护机制解决这个问题，一旦进入该模式，EurekaServer就会保护服务注册表中的信息，不再删除服务祖册表中的数据（也就是不会注销任何微服务）。当网络故障恢复后，该EurekaServer节点会自动退出自我保护模式。<br>自我保护模式中，EureKa Server会保护服务注册表中的信息，不再注销任何服务实例。当它收到心跳数重新恢复到阀值以上时，该EurekaServer 节点会自动退出自我保护模式。  </p>
 <p><strong><font color=#FF0000 >总的来说就是在触发EurekaServer的保护模式后，它宁可保留错误的服务注册信息，也不会盲目注销任何可能健康的服务实例。</font></strong></p>
 <h4 id="禁用自我保护模式"><a href="#禁用自我保护模式" class="headerlink" title="禁用自我保护模式"></a>禁用自我保护模式</h4><p><strong>Eureka Server端</strong>  </p>
