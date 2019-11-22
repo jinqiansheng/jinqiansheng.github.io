@@ -35,11 +35,12 @@
                 .setDbSource(<span class="string">"没得信息哇"</span>);
 }</code></pre>
 <p>以上处理方式属于简易型的服务熔断。实际项目中熔断和降级是共同处理，我的理解就是使用通过熔断的机制达到服务降级的目的。  </p>
+<hr>
 <h4 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h4><p>服务的降级处理是在客户端完成，服务端不做处理<br><strong>yml加入</strong></p>
 <pre><code class="yml"><span class="attr">feign:</span> 
   <span class="attr">hystrix:</span> 
     <span class="attr">enabled:</span> <span class="literal">true</span></code></pre>
-<p><strong>在@FeignClinent注解中加上fallbackFactory属性值</strong>  </p>
+<p><strong>在@FeignClinent注解中加上fallbackFactory属性值</strong>    </p>
 <pre><code class="java"><span class="meta">@FeignClient</span>(value = <span class="string">"MICROSERVICECLOUD-DEPT"</span>,fallbackFactory=DeptClientServiceFallbackFactory<span class="class">.<span class="keyword">class</span>)</span>
 @RequestMapping("/dept")
 <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DeptClientService</span> </span>{
@@ -67,7 +68,8 @@
         };
     }
 }</code></pre>
-<h4 id="hystrixDashboard服务监控"><a href="#hystrixDashboard服务监控" class="headerlink" title="hystrixDashboard服务监控"></a>hystrixDashboard服务监控</h4><p>Hystrix会通过hystrix-mettics-event-stream项目持续记录所有通过Hystrix发起的请求执行信息，并以报表的形式展示。<br><strong>POM加入</strong></p>
+<hr>
+<h4 id="hystrixDashboard服务监控"><a href="#hystrixDashboard服务监控" class="headerlink" title="hystrixDashboard服务监控"></a>hystrixDashboard服务监控</h4><p>Hystrix会通过hystrix-mettics-event-stream项目持续记录所有通过Hystrix发起的请求执行信息，并以报表的形式展示。<br><strong>POM加入</strong>  </p>
 <pre><code class="xml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-hystrix<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
@@ -76,7 +78,7 @@
     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-hystrix-dashboard<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
 <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></code></pre>
-<p><strong>主启动类</strong></p>
+<p><strong>主启动类</strong>  </p>
 <pre><code class="java"><span class="meta">@SpringBootApplication</span>
 <span class="meta">@EnableHystrixDashboard</span>
 <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeptConsumer_DashBoard_App</span></span>
@@ -86,6 +88,7 @@
         SpringApplication.run(DeptConsumer_DashBoard_App<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;
     }
 }</code></pre>
+<hr>
 <p><strong>被监控的服务提供者pom需要加入actuator</strong></p>
 <pre><code class="xml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
