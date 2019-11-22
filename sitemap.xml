@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jinqiansheng.github.io/2019/11/15/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%BA%8E%E5%8F%91%E7%8E%B0/</loc>
+    
+    <lastmod>2019-11-22T01:53:04.291Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jinqiansheng.github.io/2019/11/14/SpringCloud%E6%A6%82%E8%BF%B0/</loc>
     
     <lastmod>2019-11-22T01:41:36.885Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>https://jinqiansheng.github.io/2019/11/16/Ribbon%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
     
     <lastmod>2019-11-22T01:02:52.300Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jinqiansheng.github.io/2019/11/15/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%BA%8E%E5%8F%91%E7%8E%B0/</loc>
-    
-    <lastmod>2019-11-22T01:01:50.910Z</lastmod>
     
   </url>
   
