@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="金乾胜的个人微博"><meta name="keywords" content="java,jqs,金乾胜,jinqiansheng"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="stylesheet" type="text/css" href="https://unpkg.com/gitalk/dist/gitalk.css?v=2.0.4"><title>SpringCloud概述 | 金乾胜</title><meta name="generator" content="Hexo 4.0.0"><link rel="alternate" href="/atom.xml" title="金乾胜" type="application/atom+xml">
+</head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">SpringCloud概述</h1><a id="logo" href="/.">金乾胜</a><p class="description">榔头，榔头，有谁看见我的榔头了？</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">SpringCloud概述</h1><div class="post-meta"><a href="/2019/11/14/SpringCloud%E6%A6%82%E8%BF%B0/#comments" class="comment-count"></a><p><span class="date">Nov 14, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>分布式微服务架构下的一站式解决方案，是各个微服务架构落地技术的几何体，俗称微服务全家桶。</p>
+<h4 id="SpringCloud和SrpingBoot的关系"><a href="#SpringCloud和SrpingBoot的关系" class="headerlink" title="SpringCloud和SrpingBoot的关系"></a>SpringCloud和SrpingBoot的关系</h4><ol>
+<li>SpringBoot专注于快速方便开发单个个体微服务</li>
+<li>SpringCloud是关注全局的微服务协调治理框架，它将SpringBoot开发的一个个单体微服务整合并管理起来，为各个微服务之间提供配置管理、服务发现、断路器、路由、微代理、实践总线、全局锁、决策竞选、分布式会话等等集成服务</li>
+<li>SpringBoot可以离开SpringCloud独立使用开发项目，但是SpringCloud离不开SpringBoot，属于依赖关系</li>
+</ol>
+<h4 id="Dubbo和SpringCloud的区别："><a href="#Dubbo和SpringCloud的区别：" class="headerlink" title="Dubbo和SpringCloud的区别："></a>Dubbo和SpringCloud的区别：</h4><p><strong>技术栈对比</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">技术栈</th>
+<th align="center">Dubbo</th>
+<th align="center">SpringCloud</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">服务注册中心</td>
+<td align="center">Zookeeper(第三方)</td>
+<td align="center">Srping Cloud Netflix Eureka</td>
+</tr>
+<tr>
+<td align="center">服务调用方式</td>
+<td align="center">RPC</td>
+<td align="center">Rest API</td>
+</tr>
+<tr>
+<td align="center">服务监控</td>
+<td align="center">Dubbo-monitor</td>
+<td align="center">Spring Boot Admin</td>
+</tr>
+<tr>
+<td align="center">断路器</td>
+<td align="center">不完善</td>
+<td align="center">Spring Cloud Netflix Hystrix</td>
+</tr>
+<tr>
+<td align="center">服务网关</td>
+<td align="center">无</td>
+<td align="center">Spring Cloud Netflix Zuul</td>
+</tr>
+<tr>
+<td align="center">分布式配置</td>
+<td align="center">无</td>
+<td align="center">Spring Cloud Config</td>
+</tr>
+<tr>
+<td align="center">服务跟踪</td>
+<td align="center">无</td>
+<td align="center">Spring Cloud Sleuth</td>
+</tr>
+<tr>
+<td align="center">消息总线</td>
+<td align="center">无</td>
+<td align="center">Spring Cloud Bus</td>
+</tr>
+<tr>
+<td align="center">数据流</td>
+<td align="center">无</td>
+<td align="center">Spring Cloud Stream</td>
+</tr>
+<tr>
+<td align="center">批量任务</td>
+<td align="center">无</td>
+<td align="center">Spring Cloud Task</td>
+</tr>
+<tr>
+<td align="center">……</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><strong>区别：</strong></p>
+<ol>
+<li>SpringCloud抛弃了Dubbo的RPC通信，采用的是基于HTTP的Rest方式，严格来说，这两种方式各有优劣。虽然一定程度上来说，后者牺牲了服务调用的性能，但也避免了上面提到的原生RPC带来的问题。而且Rest相比RPC更为灵活，服务提供方和调用方的依赖只依靠一纸契约，不存在代码级别的强依赖，这在强调快速烟花的微服务环境下，显得更加灵活。</li>
+<li>SpringCloud提供了分布式的一站式服务对自身各个组件有大量的兼容测试，而Dubbo构建的微服务架构，自由度很高，但是需要开发人员对各组件的基础有足够的了解，从构建项目的成本来讲SpringCloud要优于Dubbo。</li>
+<li>社区支持和更新力度，Dubbo停止更新了5年左右，SpringCloud是Spring的拳头项目，更新力度较高，社区也相对活跃，学习成本低于Dubbo。<blockquote>
+HTTP：是指从客户端到服务端的请求消息，请求是使用具有标准定义的通用接口定向到资源的，这些语义能够被中间件和提供服务的来源机器进行解释。这样会使一个应用支撑分层的转换和间接层，并且独立于消息的来源，这对于一个Internet规模，多个组织，无法控制的可伸缩的信息系统来说，是非常有用的。主要用于对外的异构环境，浏览器接口调用，app接口调用，第三方接口调用等
+</blockquote>
+<blockquote>
+PRC：是远程过程调用协议，根据语言的API来定义的，而不是根据基于网络的应用来定义的。主要用于公司内部的服务调用，性能消耗低，传输效率高，服务质量方便。
+</blockquote>
+
+</li>
+</ol>
+<h4 id="开发参考："><a href="#开发参考：" class="headerlink" title="开发参考："></a>开发参考：</h4><p>中文API：<a href="https://www.springcloud.cc/spring-cloud-dalston.html" target="_blank" rel="noopener">https://www.springcloud.cc/spring-cloud-dalston.html</a><br>中文社区：<a href="https://www.springcloud.cn" target="_blank" rel="noopener">https://www.springcloud.cn</a><br>中文网：<a href="https://www.springcloud.cc" target="_blank" rel="noopener">https://www.springcloud.cc</a></p>
+</div><div class="post-copyright"><blockquote><p>原文作者: 金乾胜</p><p>原文链接: <a href="https://jinqiansheng.github.io/2019/11/14/SpringCloud概述/">https://jinqiansheng.github.io/2019/11/14/SpringCloud概述/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a><a href="/tags/SpringCloud/">SpringCloud</a><a href="/tags/Java/">Java</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/11/15/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%BA%8E%E5%8F%91%E7%8E%B0/" class="pre">Eureka服务注册于发现</a><a href="/2019/11/13/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A6%82%E8%BF%B0/" class="next">微服务概述</a></div><div id="comments"><div id="container"><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js?v=2.0.4"></script><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=2.0.4"></script><script>var gitalk = new Gitalk({
+  clientID: '26ab90222c429429007a',
+  clientSecret: '371da8f5ba7f6e4ba89ac3248ce4dd15a38f61b9',
+  repo: 'jinqiansheng.github.io',
+  owner: 'jinqiansheng',
+  admin: ['jinqiansheng'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: false,
+  language: 'zh-CN',
+  pagerDirection: 'last'
+})
+gitalk.render('container')</script></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringCloud和SrpingBoot的关系"><span class="toc-text">SpringCloud和SrpingBoot的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dubbo和SpringCloud的区别："><span class="toc-text">Dubbo和SpringCloud的区别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开发参考："><span class="toc-text">开发参考：</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/20/SpringCloud%20Config%E5%88%86%E5%B8%83%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/">SpringCloud Config分布式配置中心</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/Zuul%E8%B7%AF%E7%94%B1%E7%BD%91%E5%85%B3/">Zuul路由网关</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/18/Hystrix%E6%96%AD%E8%B7%AF%E5%99%A8/">Hystrix断路器</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/17/Feign%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">Feign负载均衡</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/16/Ribbon%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">Ribbon负载均衡</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/15/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%BA%8E%E5%8F%91%E7%8E%B0/">Eureka服务注册于发现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/SpringCloud%E6%A6%82%E8%BF%B0/">SpringCloud概述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/13/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A6%82%E8%BF%B0/">微服务概述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/java8%E6%96%B0%E7%89%B9%E6%80%A7/">java8新特性</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 15px;">微服务</a> <a href="/tags/SpringCloud/" style="font-size: 15px;">SpringCloud</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">9</span></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">金乾胜.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?15169873357bbc74e70db9b309cc5d99";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
