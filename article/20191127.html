@@ -25,9 +25,9 @@
 <li>消息可靠性和重复性互为矛盾，消息不丢不重难以同时保证  </li>
 <li>上游无法知道下游的执行结果，这一点是很致命的  </li>
 </ul>
-<p>如不考虑其架构的复杂性、消息传递延时，简单来说==对于一切需要实时知晓下游执行结果的场景都不适用 #009688==</p>
+<p>如不考虑其架构的复杂性、消息传递延时，简单来说<font color=#009688>对于一切需要实时知晓下游执行结果的场景都不适用</font></p>
 <p><strong>举个在别人博客中看到的最具代码行的栗子：</strong> 如果用户登录调用登录服务，该登录服务的执行结果直接影响到登录结果，需要立即反馈给调用方。这时就不能使用MQ。  </p>
-<h4 id="什么时候使用MQ"><a href="#什么时候使用MQ" class="headerlink" title="什么时候使用MQ"></a>什么时候使用MQ</h4><p>==需要使用到MQ其特性的时候。==<br><strong>别人的栗子1：（任务依赖采用顺序保证）</strong><br>某一特定时间段，有三个数据统计的任务，分别为A、B、C而B需要依赖A的执行结果作为输入，C需要依赖B的执行结果作为输入。如果使用MQ解耦只需要A执行完成发送“task1 done”给B,B完成再发送给C依次类推。<br>这里需要说明的是==MQ只用来传递上游任务执行完成的消息，并不用于传递真正的输入输出数据==</p>
+<h4 id="什么时候使用MQ"><a href="#什么时候使用MQ" class="headerlink" title="什么时候使用MQ"></a>什么时候使用MQ</h4><p><font color=#009688>需要使用到MQ其特性的时候。</font><br><strong>别人的栗子1：（任务依赖采用顺序保证）</strong><br>某一特定时间段，有三个数据统计的任务，分别为A、B、C而B需要依赖A的执行结果作为输入，C需要依赖B的执行结果作为输入。如果使用MQ解耦只需要A执行完成发送“task1 done”给B,B完成再发送给C依次类推。<br>这里需要说明的是<font color=#009688>MQ只用来传递上游任务执行完成的消息，并不用于传递真正的输入输出数据</font></p>
 <p><strong>别人的栗子2：（上游不关心下游的执行结果）</strong><br>58同城的很多下游需要关注“用户发布帖子”这个事件，比如招聘用户发布帖子后，招聘业务要奖励58豆，房产用户发布帖子后，房产业务要送2个置顶，二手用户发布帖子后，二手业务要修改用户统计数据。  </p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&mid=2651960012&idx=1&sn=c6af5c79ecead98daa4d742e5ad20ce5&chksm=bd2d07108a5a8e0624ae6ad95001c4efe09d7ba695f2ddb672064805d771f3f84bee8123b8a6&mpshare=1&scene=1&srcid=04054h4e90lz5Qc2YKnLNuvY" target="_blank" rel="noopener">大佬的原文</a> 大佬的原文，图文并茂，我只是个搬运工。  </p>
 </div><div class="post-copyright"><blockquote><p>原文作者: 金乾胜</p><p>原文链接: <a href="http://jinqiansheng.cn/article/article/20191127.html">http://jinqiansheng.cn/article/article/20191127.html</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/MQ/">MQ</a><a href="/tags/Rabbit/">Rabbit</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/article/20191120.html" class="next">SpringCloud Config分布式配置中心</a></div><div id="comments"><div id="container"><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js?v=2.0.4"></script><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=2.0.4"></script><script>var gitalk = new Gitalk({
